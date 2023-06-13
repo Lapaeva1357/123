@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        File file = new File("c://temp//testFile3.txt");
+        file.createNewFile();
+        System.out.println("Файл был создан");
+        System.out.println("Введите данные");
+
+        System.out.print("ФИО:");
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        System.out.print("Группа:");
+        Scanner scanner2 = new Scanner(System.in);
+        String str1 = scanner2.nextLine();
+
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write("Фио: " +str);
+        fileWriter.write("\n");
+        fileWriter.write("Группа: " +str1);
+        fileWriter.close();
+
+        System.out.println("Данные успешно сохранены");
+        FileReader fileReader = new FileReader(file);
+        Scanner scanner1 = new Scanner(fileReader);
+        System.out.println("Данные в файле: ");
+        while (scanner1.hasNextLine()){
+            System.out.println(scanner1.nextLine());
+        }
+        fileReader.close();
+    }
+}
